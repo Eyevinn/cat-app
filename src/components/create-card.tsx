@@ -1,9 +1,10 @@
 import { Card, CardBody } from "@heroui/card";
-import SettingsAccordion from "./settings-accordion";
 import { useMemo, useState } from "react";
 import { Textarea } from "@heroui/input";
 import { CAT } from "@eyevinn/cat";
 import { Button } from "@heroui/button";
+
+import SettingsAccordion from "./settings-accordion";
 
 export default function CreateCard() {
   const [keyId, setKeyId] = useState("Symmetric256");
@@ -14,7 +15,7 @@ export default function CreateCard() {
   const [errorMessage, setErrorMessage] = useState("");
   const [token, setToken] = useState("");
   const defaultClaims = {
-    iss: 'eyevinn',
+    iss: "eyevinn",
     iat: Math.floor(Date.now() / 1000),
     exp: Math.floor(Date.now() / 1000) + 3600,
   };
@@ -60,9 +61,11 @@ export default function CreateCard() {
       if (!JSON.parse(claims)) {
         return true;
       }
+
       return false;
     } catch (e) {
       setErrorMessage((e as Error).message);
+
       return true;
     }
   }, [claims]);
@@ -72,11 +75,11 @@ export default function CreateCard() {
       <CardBody>
         <div className="flex flex-col gap-2">
           <Textarea
-            label="Claims"
-            name="Claims"
             color={isInvalid ? "danger" : "default"}
             errorMessage={errorMessage}
             isInvalid={isInvalid}
+            label="Claims"
+            name="Claims"
             value={claims}
             onValueChange={setClaims}
           />
@@ -104,5 +107,5 @@ export default function CreateCard() {
         </div>
       </CardBody>
     </Card>
-  )
+  );
 }

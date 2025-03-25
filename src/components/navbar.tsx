@@ -12,11 +12,11 @@ import {
 } from "@heroui/navbar";
 import { link as linkStyles } from "@heroui/theme";
 import clsx from "clsx";
+import { Image } from "@heroui/image";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { GithubIcon, SearchIcon } from "@/components/icons";
-import { Image } from "@heroui/image";
 
 export const Navbar = () => {
   const searchInput = (

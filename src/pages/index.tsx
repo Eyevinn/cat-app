@@ -8,7 +8,6 @@ import { GithubIcon } from "@/components/icons";
 import DefaultLayout from "@/layouts/default";
 import ParseCard from "@/components/parse-card";
 import CreateCard from "@/components/create-card";
-import { useState } from "react";
 
 export default function IndexPage() {
   return (

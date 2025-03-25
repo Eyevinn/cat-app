@@ -27,8 +27,8 @@ const SettingsAccordion: FC<SettingsAccordionProps> = ({
         <div className="flex flex-row gap-2">
           <Input
             label="Key Id"
-            value={keyId}
             type="text"
+            value={keyId}
             onValueChange={(value) => {
               setKeyId(value);
               handleSettingsChange({ keyId: value, key, alg });
@@ -36,8 +36,8 @@ const SettingsAccordion: FC<SettingsAccordionProps> = ({
           />
           <Input
             label="Key (hex)"
-            value={key}
             type="text"
+            value={key}
             onValueChange={(value) => {
               setKey(value);
               handleSettingsChange({ keyId, key: value, alg });
@@ -45,8 +45,8 @@ const SettingsAccordion: FC<SettingsAccordionProps> = ({
           />
           <Input
             label="Algorithm"
-            value={alg}
             type="text"
+            value={alg}
             onValueChange={(value) => {
               setAlg(value);
               handleSettingsChange({ keyId, key, alg: value });

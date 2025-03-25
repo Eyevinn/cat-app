@@ -52,10 +52,10 @@ export default function ParseCard() {
         <div className="flex flex-col gap-2">
           <div className="flex flex-row gap-2 items-center">
             <Input
+              isClearable={true}
               label="Common Access Token"
               placeholder="Insert a base64 encoded token here"
               type="text"
-              isClearable={true}
               onValueChange={setToken}
             />
             <Button
