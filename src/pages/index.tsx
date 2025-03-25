@@ -48,7 +48,7 @@ export default function IndexPage() {
             <Tab key="parse" title="Parse">
               <ParseCard />
             </Tab>
-            <Tab key="create" title="Create">
+            <Tab key="create" title="Create" disabled={true}>
               <CreateCard />
             </Tab>
           </Tabs>
