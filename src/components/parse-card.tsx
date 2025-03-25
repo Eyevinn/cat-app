@@ -8,17 +8,9 @@ import { useState } from "react";
 
 import SettingsAccordion from "./settings-accordion";
 
-export interface ParseCardProps {
-  defaultValue: string;
-  onTokenChange?: (token: string) => void;
-}
-
-export default function ParseCard({
-  defaultValue,
-  onTokenChange,
-}: ParseCardProps) {
+export default function ParseCard() {
   const [cat, setCat] = useState<CommonAccessToken | undefined>(undefined);
-  const [token, setToken] = useState(defaultValue);
+  const [token, setToken] = useState("");
   const [message, setMessage] = useState("");
   const [keyId, setKeyId] = useState("Symmetric256");
   const [key, setKey] = useState(
@@ -64,11 +56,7 @@ export default function ParseCard({
               placeholder="Insert a base64 encoded token here"
               type="text"
               isClearable={true}
-              defaultValue={token}
-              onValueChange={(value) => {
-                setToken(value);
-                onTokenChange && onTokenChange(value);
-              }}
+              onValueChange={setToken}
             />
             <Button
               color="primary"

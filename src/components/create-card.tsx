@@ -5,19 +5,14 @@ import { Textarea } from "@heroui/input";
 import { CAT } from "@eyevinn/cat";
 import { Button } from "@heroui/button";
 
-export interface CreateCardProps {
-  defaultValue?: string;
-  onTokenChange?: (token: string) => void;
-}
-
-export default function CreateCard({ defaultValue, onTokenChange }: CreateCardProps) {
+export default function CreateCard() {
   const [keyId, setKeyId] = useState("Symmetric256");
   const [key, setKey] = useState(
     "403697de87af64611c1d32a05dab0fe1fcb715a86ab435f1ec99192d79569388",
   );
   const [alg, setAlg] = useState("HS256");
   const [errorMessage, setErrorMessage] = useState("");
-  const [token, setToken] = useState(defaultValue);
+  const [token, setToken] = useState("");
   const defaultClaims = {
     iss: 'eyevinn',
     iat: Math.floor(Date.now() / 1000),
@@ -45,7 +40,6 @@ export default function CreateCard({ defaultValue, onTokenChange }: CreateCardPr
           setErrorMessage("");
           if (token) {
             setToken(token);
-            onTokenChange && onTokenChange(token);
           }
         })
         .catch((err) => {

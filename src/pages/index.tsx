@@ -11,9 +11,6 @@ import CreateCard from "@/components/create-card";
 import { useState } from "react";
 
 export default function IndexPage() {
-  const [encodedToken, setEncodedToken] = useState("");
-  const [tokenToDecode, setTokenToDecode] = useState("");
-
   return (
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
@@ -50,16 +47,10 @@ export default function IndexPage() {
         <div className="mt-8 w-[80%]">
           <Tabs aria-label="Options">
             <Tab key="parse" title="Parse">
-              <ParseCard
-                defaultValue={tokenToDecode}
-                onTokenChange={setTokenToDecode}
-              />
+              <ParseCard />
             </Tab>
             <Tab key="create" title="Create">
-              <CreateCard
-                defaultValue={encodedToken}
-                onTokenChange={setEncodedToken}
-              />
+              <CreateCard />
             </Tab>
           </Tabs>
         </div>
