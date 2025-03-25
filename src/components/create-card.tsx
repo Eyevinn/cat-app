@@ -13,7 +13,7 @@ export default function CreateCard() {
   );
   const [alg, setAlg] = useState("HS256");
   const [errorMessage, setErrorMessage] = useState("");
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState<string>("");
   const defaultClaims = {
     iss: "eyevinn",
     iat: Math.floor(Date.now() / 1000),
@@ -27,7 +27,7 @@ export default function CreateCard() {
 
     keys[keyId] = Buffer.from(key, "hex");
 
-    const generator = new CAT({ keys });
+    const generator = new CAT({ keys, expectCwtTag: true });
 
     try {
       generator
