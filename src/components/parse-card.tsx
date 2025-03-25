@@ -57,7 +57,7 @@ export default function ParseCard() {
             <Button
               color="primary"
               isDisabled={!token}
-              onPress={(e) => parse(token)}
+              onPress={() => parse(token)}
             >
               Parse
             </Button>
