@@ -2,6 +2,8 @@ import { Link } from "@heroui/link";
 
 import { Navbar } from "@/components/navbar";
 
+import { version } from '@eyevinn/cat/package.json';
+
 export default function DefaultLayout({
   children,
 }: {
@@ -20,7 +22,7 @@ export default function DefaultLayout({
           href="https://www.npmjs.com/package/@eyevinn/cat"
         >
           <span className="text-default-600">
-            Based on @eyevinn/cat NPM library
+            Based on @eyevinn/cat NPM library ({'v' + version})
           </span>
         </Link>
         <Link
