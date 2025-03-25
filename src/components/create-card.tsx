@@ -1,10 +1,11 @@
 import { Card, CardBody } from "@heroui/card";
 import { useMemo, useState } from "react";
 import { Textarea } from "@heroui/input";
-import { CAT } from "@eyevinn/cat";
 import { Button } from "@heroui/button";
 
 import SettingsAccordion from "./settings-accordion";
+
+const CAT_GENERATE_URL = "https://eyevinn-catweb.eyevinn-cat-validate.auto.prod.osaas.io/generate";
 
 export default function CreateCard() {
   const [keyId, setKeyId] = useState("Symmetric256");
@@ -27,15 +28,23 @@ export default function CreateCard() {
 
     keys[keyId] = Buffer.from(key, "hex");
 
-    const generator = new CAT({ keys, expectCwtTag: true });
-
     try {
-      generator
-        .generateFromJson(JSON.parse(claims), {
-          type: "mac",
+      fetch(new URL(CAT_GENERATE_URL), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          claims: claims,
+          key: {
+            keyId,
+            key,
+          },
           alg,
-          kid: keyId,
-          generateCwtId: true,
+        }),
+      })
+        .then((response) => {
+          return response.text();
         })
         .then((token) => {
           setErrorMessage("");

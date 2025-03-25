@@ -11,7 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@eyevinn/cat": "^0.12.1",
+    "@eyevinn/cat": "^0.13.2",
     "@heroui/accordion": "^2.2.13",
     "@heroui/alert": "^2.2.16",
     "@heroui/button": "^2.2.16",
@@ -32,7 +32,6 @@
     "@microlink/react-json-view": "^1.26.1",
     "@react-aria/visually-hidden": "3.8.20",
     "@react-types/shared": "3.28.0",
-    "buffer": "^6.0.3",
     "clsx": "2.1.1",
     "framer-motion": "11.15.0",
     "react": "18.3.1",
