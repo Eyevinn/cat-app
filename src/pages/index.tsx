@@ -7,8 +7,13 @@ import { title } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
 import DefaultLayout from "@/layouts/default";
 import ParseCard from "@/components/parse-card";
+import CreateCard from "@/components/create-card";
+import { useState } from "react";
 
 export default function IndexPage() {
+  const [encodedToken, setEncodedToken] = useState("");
+  const [tokenToDecode, setTokenToDecode] = useState("");
+
   return (
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
@@ -45,9 +50,17 @@ export default function IndexPage() {
         <div className="mt-8 w-[80%]">
           <Tabs aria-label="Options">
             <Tab key="parse" title="Parse">
-              <ParseCard />
+              <ParseCard
+                defaultValue={tokenToDecode}
+                onTokenChange={setTokenToDecode}
+              />
             </Tab>
-            <Tab key="create" title="Create"></Tab>
+            <Tab key="create" title="Create">
+              <CreateCard
+                defaultValue={encodedToken}
+                onTokenChange={setEncodedToken}
+              />
+            </Tab>
           </Tabs>
         </div>
       </section>
