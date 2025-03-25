@@ -63,6 +63,7 @@ export default function ParseCard({
               label="Common Access Token"
               placeholder="Insert a base64 encoded token here"
               type="text"
+              isClearable={true}
               defaultValue={token}
               onValueChange={(value) => {
                 setToken(value);

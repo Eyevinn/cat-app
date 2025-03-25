@@ -93,7 +93,13 @@ export default function CreateCard({ defaultValue, onTokenChange }: CreateCardPr
           >
             Generate
           </Button>
-          {token && <Textarea label="Common Access Token" value={token} />}
+          {token && (
+            <Textarea
+              isClearable={true}
+              label="Common Access Token"
+              value={token}
+            />
+          )}
           <SettingsAccordion
             handleSettingsChange={({ keyId, key, alg }) => {
               setKeyId(keyId);
