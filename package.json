@@ -1,7 +1,8 @@
 {
-  "name": "vite-template",
+  "name": "cat-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "Web application to create and parse CTA Common Access Tokens",
   "type": "module",
   "scripts": {
     "dev": "vite",
