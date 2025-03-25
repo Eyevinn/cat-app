@@ -14,7 +14,7 @@ export default function IndexPage() {
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div className="inline-block max-w-lg text-center justify-center">
           <span className={title()}>Parse and create&nbsp;</span>
-          <br/>
+          <br />
           <span className={title({ color: "blue" })}>
             CTA Common Access Tokens&nbsp;
           </span>
@@ -47,8 +47,7 @@ export default function IndexPage() {
             <Tab key="parse" title="Parse">
               <ParseCard />
             </Tab>
-            <Tab key="create" title="Create">
-            </Tab>
+            <Tab key="create" title="Create"></Tab>
           </Tabs>
         </div>
       </section>
