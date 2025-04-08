@@ -1,11 +1,10 @@
+import { CAT } from "@eyevinn/cat";
 import { Card, CardBody } from "@heroui/card";
 import { useMemo, useState } from "react";
 import { Textarea } from "@heroui/input";
 import { Button } from "@heroui/button";
 
 import SettingsAccordion from "./settings-accordion";
-
-const CAT_GENERATE_URL = "https://eyevinn-catweb.eyevinn-cat-validate.auto.prod.osaas.io/generate";
 
 export default function CreateCard() {
   const [keyId, setKeyId] = useState("Symmetric256");
@@ -23,39 +22,24 @@ export default function CreateCard() {
 
   const [claims, setClaims] = useState(JSON.stringify(defaultClaims, null, 2));
 
-  const generateToken = () => {
+  const generateToken = async () => {
     const keys: { [id: string]: Buffer } = {};
 
     keys[keyId] = Buffer.from(key, "hex");
+    const generator = new CAT({ keys, expectCwtTag: true });
 
     try {
-      fetch(new URL(CAT_GENERATE_URL), {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          claims: claims,
-          key: {
-            keyId,
-            key,
-          },
-          alg,
-        }),
-      })
-        .then((response) => {
-          return response.text();
-        })
-        .then((token) => {
-          setErrorMessage("");
-          if (token) {
-            setToken(token);
-          }
-        })
-        .catch((err) => {
-          setErrorMessage((err as Error).message);
-          setToken("");
-        });
+      const token = await generator.generateFromJson(JSON.parse(claims), {
+        type: "mac",
+        alg,
+        kid: keyId,
+        generateCwtId: true,
+      });
+
+      if (token) {
+        setToken(token);
+        setErrorMessage("");
+      }
     } catch (err) {
       setToken("");
       setErrorMessage((err as Error).message);
